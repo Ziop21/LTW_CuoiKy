@@ -3,6 +3,8 @@ package iotstar.vn.model;
 import java.io.Serializable;
 import java.sql.Date;
 
+
+
 public class ProductModel implements Serializable{
 	private int _id;
 	private String name;
@@ -16,6 +18,9 @@ public class ProductModel implements Serializable{
 	private boolean isSelling;
 	private String[] listImages;
 	private int categoryId;
+	private CategoryModel category;
+	private StoreModel store;
+	private String image;
 	
 	//private int[] styleValueIds;
 	private int storeId;
@@ -24,7 +29,7 @@ public class ProductModel implements Serializable{
 	private Date updatedAt;
 	public ProductModel(int _id, String name, String slug, String description, int price, int promotionalPrice,
 			int quantity, int sold, boolean isActive, boolean isSelling, String[] listImages, int categoryId,
-			Date createdAt, Date updatedAt) {
+			CategoryModel category, StoreModel store, String image, int storeId, Date createdAt, Date updatedAt) {
 		super();
 		this._id = _id;
 		this.name = name;
@@ -38,8 +43,39 @@ public class ProductModel implements Serializable{
 		this.isSelling = isSelling;
 		this.listImages = listImages;
 		this.categoryId = categoryId;
+		this.category = category;
+		this.store = store;
+		this.image = image;
+		this.storeId = storeId;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public CategoryModel getCategory() {
+		return category;
+	}
+	public void setCategory(CategoryModel category) {
+		this.category = category;
+	}
+	public StoreModel getStore() {
+		return store;
+	}
+	public void setStore(StoreModel store) {
+		this.store = store;
+	}
+	public int getStoreId() {
+		return storeId;
+	}
+	public void setStoreId(int storeId) {
+		this.storeId = storeId;
 	}
 	public ProductModel() {
 		super();

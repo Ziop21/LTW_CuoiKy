@@ -1,31 +1,33 @@
 package iotstar.vn.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class OrderModel implements Serializable{
 	private int _id;
 	private int userId;
 	private int storedId;
+	private int cartId;
 	//private int deliveryId;
 	//private int commissionId
 	private String address;
 	private String phone;
 	private String status;
-	private boolean isPaidBefore;
-	private int amountFromUser;
+	private Boolean isPaidBefore;
+	private float amountFromUser;
 	private int amountFromStore;
 	private int amountToStore;
 	private int amountToGD;
-	private Date createdAt;
-	private Date updatedAt;
-	public OrderModel(int _id, int userId, int storedId, String address, String phone, String status,
-			boolean isPaidBefore, int amountFromUser, int amountFromStore, int amountToStore, int amountToGD,
-			Date createdAt, Date updatedAt) {
+	private Timestamp createdAt;
+	private Timestamp updatedAt;	
+	public OrderModel(int _id, int userId, int storedId, int cartId, String address, String phone, String status,
+			Boolean isPaidBefore, float amountFromUser, int amountFromStore, int amountToStore, int amountToGD,
+			Timestamp createdAt, Timestamp updatedAt) {
 		super();
 		this._id = _id;
 		this.userId = userId;
 		this.storedId = storedId;
+		this.cartId = cartId;
 		this.address = address;
 		this.phone = phone;
 		this.status = status;
@@ -37,6 +39,15 @@ public class OrderModel implements Serializable{
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
+
+	public int getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
+
 	public OrderModel() {
 		super();
 	}
@@ -82,10 +93,10 @@ public class OrderModel implements Serializable{
 	public void setPaidBefore(boolean isPaidBefore) {
 		this.isPaidBefore = isPaidBefore;
 	}
-	public int getAmountFromUser() {
+	public float getAmountFromUser() {
 		return amountFromUser;
 	}
-	public void setAmountFromUser(int amountFromUser) {
+	public void setAmountFromUser(float amountFromUser) {
 		this.amountFromUser = amountFromUser;
 	}
 	public int getAmountFromStore() {
@@ -106,16 +117,16 @@ public class OrderModel implements Serializable{
 	public void setAmountToGD(int amountToGD) {
 		this.amountToGD = amountToGD;
 	}
-	public Date getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Date getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 	

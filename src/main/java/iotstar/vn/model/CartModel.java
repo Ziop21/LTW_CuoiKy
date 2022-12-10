@@ -1,15 +1,16 @@
 package iotstar.vn.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class CartModel implements Serializable{
 	private int _id;
 	private int userId;
 	private int storeId;
-	private Date createdAt;
-	private Date updatedAt;
-	public CartModel(int _id, int userId, int storeId, Date createdAt, Date updatedAt) {
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
+	public CartModel(int _id, int userId, int storeId, Timestamp createdAt, Timestamp updatedAt) {
 		super();
 		this._id = _id;
 		this.userId = userId;
@@ -38,16 +39,16 @@ public class CartModel implements Serializable{
 	public void setStoreId(int storeId) {
 		this.storeId = storeId;
 	}
-	public Date getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Date getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 	

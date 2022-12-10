@@ -2,6 +2,7 @@ package iotstar.vn.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class StoreModel implements Serializable{
 	private int _id;
@@ -10,8 +11,8 @@ public class StoreModel implements Serializable{
 	private String slug;
 	private int ownerId;
 	private int[] staffIds;
-	private boolean isActive;
-	private boolean isOpen;
+	private Boolean isActive;
+	private Boolean isOpen;
 	private String avatar;
 	private String cover;
 	private String[] featured_images;
@@ -19,11 +20,14 @@ public class StoreModel implements Serializable{
 	private int point;
 	//private int rating;
 	private int e_wallet;
-	private Date createdAt;
-	private Date updatedAt;
-	public StoreModel(int _id, String name, String bio, String slug, int ownerId, int[] staffIds, boolean isActive,
-			boolean isOpen, String avatar, String cover, String[] featured_images, int commissionId, int point,
-			int rating, int e_wallet, Date createdAt, Date updatedAt) {
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
+	private UserModel user;
+	
+	
+	public StoreModel(int _id, String name, String bio, String slug, int ownerId, int[] staffIds, Boolean isActive,
+			Boolean isOpen, String avatar, String cover, String[] featured_images, int point, int e_wallet,
+			Timestamp createdAt, Timestamp updatedAt, UserModel user) {
 		super();
 		this._id = _id;
 		this.name = name;
@@ -36,12 +40,11 @@ public class StoreModel implements Serializable{
 		this.avatar = avatar;
 		this.cover = cover;
 		this.featured_images = featured_images;
-//		this.commissionId = commissionId;
 		this.point = point;
-//		this.rating = rating;
 		this.e_wallet = e_wallet;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+		this.user = user;
 	}
 	public StoreModel() {
 		super();
@@ -82,16 +85,16 @@ public class StoreModel implements Serializable{
 	public void setStaffIds(int[] staffIds) {
 		this.staffIds = staffIds;
 	}
-	public boolean isActive() {
+	public Boolean getIsActive() {
 		return isActive;
 	}
-	public void setActive(boolean isActive) {
+	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	public boolean isOpen() {
+	public Boolean getIsOpen() {
 		return isOpen;
 	}
-	public void setOpen(boolean isOpen) {
+	public void setIsOpen(Boolean isOpen) {
 		this.isOpen = isOpen;
 	}
 	public String getAvatar() {
@@ -112,41 +115,36 @@ public class StoreModel implements Serializable{
 	public void setFeatured_images(String[] featured_images) {
 		this.featured_images = featured_images;
 	}
-//	public int getCommissionId() {
-//		return commissionId;
-//	}
-//	public void setCommissionId(int commissionId) {
-//		this.commissionId = commissionId;
-//	}
 	public int getPoint() {
 		return point;
 	}
 	public void setPoint(int point) {
 		this.point = point;
 	}
-//	public int getRating() {
-//		return rating;
-//	}
-//	public void setRating(int rating) {
-//		this.rating = rating;
-//	}
 	public int getE_wallet() {
 		return e_wallet;
 	}
 	public void setE_wallet(int e_wallet) {
 		this.e_wallet = e_wallet;
 	}
-	public Date getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Date getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	public UserModel getUser() {
+		return user;
+	}
+	public void setUser(UserModel user) {
+		this.user = user;
+	}
+
 	
 }

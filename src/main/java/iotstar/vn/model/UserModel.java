@@ -2,6 +2,7 @@ package iotstar.vn.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @SuppressWarnings("serial")
 public class UserModel implements Serializable {
@@ -18,17 +19,20 @@ public class UserModel implements Serializable {
 	private String hashed_password;
 	private String role;
 	private String[] addresses;
+	private String address;
 	private String avatar;
 	private String cover;
 	private int point;
 	private int e_wallet;
-	private Date createdAt;
-	private Date updatedAt;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
+	public UserModel() {
+		super();
+	}
 	public UserModel(int _id, String firstname, String lastname, String slug, String id_card, String email,
 			String phone, boolean isEmailActive, boolean isPhoneActive, String salt, String hashed_password,
-			String role, String[] addresses, String avatar, String cover, int point, int e_wallet, Date createdAt,
-			Date updatedAt) {
-		super();
+			String role, String[] addresses, String address, String avatar, String cover, int point, int e_wallet,
+			Timestamp createdAt, Timestamp updatedAt) {
 		this._id = _id;
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -42,15 +46,13 @@ public class UserModel implements Serializable {
 		this.hashed_password = hashed_password;
 		this.role = role;
 		this.addresses = addresses;
+		this.address = address;
 		this.avatar = avatar;
 		this.cover = cover;
 		this.point = point;
 		this.e_wallet = e_wallet;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-	}
-	public UserModel() {
-		super();
 	}
 	public int get_id() {
 		return _id;
@@ -130,6 +132,12 @@ public class UserModel implements Serializable {
 	public void setAddresses(String[] addresses) {
 		this.addresses = addresses;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getAvatar() {
 		return avatar;
 	}
@@ -154,18 +162,17 @@ public class UserModel implements Serializable {
 	public void setE_wallet(int e_wallet) {
 		this.e_wallet = e_wallet;
 	}
-	public Date getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Date getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
 	
 }
