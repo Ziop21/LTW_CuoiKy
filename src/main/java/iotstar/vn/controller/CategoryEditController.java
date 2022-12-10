@@ -21,8 +21,6 @@ import iotstar.vn.Service.Impl.ICategoryServiceImpl;
 import iotstar.vn.model.CategoryModel;
 import vn.iotstar.util.Constant;
 
-//Edit Categories
-@WebServlet(urlPatterns = { "/admin/category/edit" })
 public class CategoryEditController extends HttpServlet {
 	ICategoryService cateService = new ICategoryServiceImpl();
 

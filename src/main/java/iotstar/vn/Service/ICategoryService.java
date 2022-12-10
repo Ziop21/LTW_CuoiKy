@@ -5,12 +5,25 @@ import java.util.List;
 import iotstar.vn.model.CategoryModel;
 
 public interface ICategoryService {
-	void insert(CategoryModel category);
-	void edit(CategoryModel newCategory);
-	void delete(int id);
-	CategoryModel get(int id);
-	CategoryModel get(String name);
+	List<CategoryModel> searchByName(String keyword);
+
+	void edit(CategoryModel category);
+
 	List<CategoryModel> findAll();
-	List<CategoryModel> search(String catename) ;
-	public CategoryModel findById(int id);
+
+	CategoryModel findByCategoryId(int categoryId);
+
+	void deleteByCategoryId(int catetegoryId);
+
+	void insert(CategoryModel category);
+	
+	CategoryModel findBy_id(int _id);
+
+	void update(CategoryModel category);
+	
+	void deleteBy_id(int _id);
+	
+	List<CategoryModel> findAllPage(int indexp, int size);
+
+	int countAll();
 }

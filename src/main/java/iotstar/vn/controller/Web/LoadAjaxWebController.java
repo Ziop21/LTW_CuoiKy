@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import iotstar.vn.Service.IProductWebService;
-import iotstar.vn.Service.Impl.IProductWebServiceImpl;
+import iotstar.vn.Service.IProductService;
+import iotstar.vn.Service.Impl.IProductServiceImpl;
 import iotstar.vn.model.ProductModel;
 
 @WebServlet("/LoadAjaxWebController")
 public class LoadAjaxWebController extends HttpServlet {
-	IProductWebService prodService = new IProductWebServiceImpl();
+	IProductService prodService = new IProductServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

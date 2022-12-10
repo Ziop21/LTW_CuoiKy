@@ -2,14 +2,15 @@ package iotstar.vn.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class ProductModel implements Serializable{
 	private int _id;
 	private String name;
 	private String slug;
 	private String description;
-	private int price;
-	private int promotionalPrice;
+	private float price;
+	private float promotionalPrice;
 	private int quantity;
 	private int sold;
 	private boolean isActive;
@@ -19,12 +20,15 @@ public class ProductModel implements Serializable{
 	
 	//private int[] styleValueIds;
 	private int storeId;
-	//private int rating;
-	private Date createdAt;
-	private Date updatedAt;
-	public ProductModel(int _id, String name, String slug, String description, int price, int promotionalPrice,
+	private int rating;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;	
+	private CategoryModel category;
+	
+	
+	public ProductModel(int _id, String name, String slug, String description, float price, float promotionalPrice,
 			int quantity, int sold, boolean isActive, boolean isSelling, String[] listImages, int categoryId,
-			Date createdAt, Date updatedAt) {
+			int storeId, int rating, Timestamp createdAt, Timestamp updatedAt, CategoryModel category) {
 		super();
 		this._id = _id;
 		this.name = name;
@@ -38,8 +42,23 @@ public class ProductModel implements Serializable{
 		this.isSelling = isSelling;
 		this.listImages = listImages;
 		this.categoryId = categoryId;
+		this.storeId = storeId;
+		this.rating = rating;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+		this.category = category;
+	}
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	public int getStoreId() {
+		return storeId;
+	}
+	public void setStoreId(int storeId) {
+		this.storeId = storeId;
 	}
 	public ProductModel() {
 		super();
@@ -68,16 +87,16 @@ public class ProductModel implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getPrice() {
+	public float getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
-	public int getPromotionalPrice() {
+	public float getPromotionalPrice() {
 		return promotionalPrice;
 	}
-	public void setPromotionalPrice(int promotionalPrice) {
+	public void setPromotionalPrice(float promotionalPrice) {
 		this.promotionalPrice = promotionalPrice;
 	}
 	public int getQuantity() {
@@ -92,23 +111,29 @@ public class ProductModel implements Serializable{
 	public void setSold(int sold) {
 		this.sold = sold;
 	}
-	public boolean isActive() {
+	public boolean getIsActive() {	
 		return isActive;
 	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setIsActive(int isActive) {
+		this.isActive = isActive == 0 ? false : true;
 	}
-	public boolean isSelling() {
+	public boolean getIsSelling() {
 		return isSelling;
 	}
-	public void setSelling(boolean isSelling) {
-		this.isSelling = isSelling;
+	public void setIsSelling(int isSelling) {
+		this.isSelling = isSelling == 0 ? false : true;
 	}
 	public String[] getListImages() {
 		return listImages;
 	}
-	public void setListImages(String[] listImages) {
-		this.listImages = listImages;
+	public void setListImages(String listImages) {
+		if (listImages == null)
+			this.listImages = null;
+		else
+		{
+			String[] result = listImages.split(",");
+			this.listImages = result;
+		}
 	}
 	public int getCategoryId() {
 		return categoryId;
@@ -116,18 +141,23 @@ public class ProductModel implements Serializable{
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-	public Date getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Date getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
+	public CategoryModel getCategory() {
+		return category;
+	}
+	public void setCategory(CategoryModel category) {
+		this.category = category;
+	}
 	
 }

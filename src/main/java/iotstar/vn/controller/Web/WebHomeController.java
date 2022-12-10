@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import iotstar.vn.Service.IProductWebService;
-import iotstar.vn.Service.Impl.IProductWebServiceImpl;
+import iotstar.vn.Service.IProductService;
+import iotstar.vn.Service.Impl.IProductServiceImpl;
 import iotstar.vn.model.ProductModel;
 
 
@@ -19,7 +19,7 @@ import iotstar.vn.model.ProductModel;
 @WebServlet(urlPatterns = {"/home"})
 public class WebHomeController extends HttpServlet{
 	
-	IProductWebService prodService = new IProductWebServiceImpl();
+	IProductService prodService = new IProductServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<ProductModel> productList = prodService.findLastProductList();

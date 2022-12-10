@@ -2,11 +2,11 @@ package iotstar.vn.Service.Impl;
 
 import iotstar.vn.Service.IUserService;
 import iotstar.vn.dao.IUserDAO;
-import iotstar.vn.dao.impl.IUserDAOImpl;
+import iotstar.vn.dao.impl.UserDAOImpl;
 import iotstar.vn.model.UserModel;
 
 public class IUserServiceImpl implements IUserService{
-	IUserDAO userDao = new IUserDAOImpl();
+	IUserDAO userDao = new UserDAOImpl();
 	
 	@Override
 	public UserModel login(String username, String password) {

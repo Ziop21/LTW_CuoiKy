@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 
-import vn.iotstar.util.Constant;
+import iotstar.vn.utils.Constant;
+
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/image") // ?fname=abc.png

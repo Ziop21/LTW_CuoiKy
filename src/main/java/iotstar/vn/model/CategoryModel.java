@@ -1,7 +1,7 @@
 package iotstar.vn.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class CategoryModel implements Serializable{
 	private int _id;
@@ -10,10 +10,11 @@ public class CategoryModel implements Serializable{
 	private int categoryId;
 	private String image;
 	private boolean isDeleted;
-	private Date createdAt;
-	private Date updatedAt;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
+	
 	public CategoryModel(int _id, String name, String slug, int categoryId, String image, boolean isDeleted,
-			Date createdAt, Date updatedAt) {
+			Timestamp createdAt, Timestamp updatedAt) {
 		super();
 		this._id = _id;
 		this.name = name;
@@ -24,8 +25,8 @@ public class CategoryModel implements Serializable{
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
+	
 	public CategoryModel() {
-		super();
 	}
 	public int get_id() {
 		return _id;
@@ -57,22 +58,22 @@ public class CategoryModel implements Serializable{
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public boolean isDeleted() {
+	public boolean getIsDeleted() {
 		return isDeleted;
 	}
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted == 0 ? false : true;
 	}
-	public Date getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Date getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 	

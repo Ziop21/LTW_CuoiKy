@@ -12,13 +12,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin</title>
     <!-- CSS -->
+    
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="styleshee" type="text/css">
     <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" rel="styleshee" type="text/css">
     
-
+    <link href="${URL}css/style.min.css" rel="stylesheet" type="text/css">
+    <link href="${URL}css/mdb.min.css" rel="stylesheet" type="text/css">
+ 	<link href="${URL}css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="${URL}css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>

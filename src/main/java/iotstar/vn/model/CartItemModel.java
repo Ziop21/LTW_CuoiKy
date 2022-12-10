@@ -1,7 +1,7 @@
 package iotstar.vn.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class CartItemModel implements Serializable{
 	private int _id;

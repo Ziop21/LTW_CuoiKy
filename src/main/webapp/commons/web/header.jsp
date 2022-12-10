@@ -12,16 +12,16 @@
 	
 	        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
 	            <ul class="navbar-nav m-auto">
-	            <c:url value="/" var="link"></c:url>
+	            <c:url value="/web" var="link"></c:url>
 	                <li class="nav-item active">
 	                    <a class="nav-link" href="${link}home">Home <span
 						class="sr-only">(current)</span></a>
 				</li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="${link}category/list">Categories</a>
+	                    <a class="nav-link" href="${link}/category">Categories</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="product.html">Product</a>
+	                    <a class="nav-link" href="${link}/product">Product</a>
 	                </li>
 	                <li class="nav-item">
 	                    <a class="nav-link" href="product.html">Cart</a>

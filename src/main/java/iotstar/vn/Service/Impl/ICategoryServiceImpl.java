@@ -5,59 +5,81 @@ import java.util.List;
 
 import iotstar.vn.connection.DBConnection;
 import iotstar.vn.dao.ICategoryDAO;
-import iotstar.vn.dao.impl.ICategoryDAOImpl;
+import iotstar.vn.dao.impl.CategoryDAOImpl;
 import iotstar.vn.model.CategoryModel;
 import iotstar.vn.Service.ICategoryService;
 
 public class ICategoryServiceImpl extends DBConnection implements ICategoryService{
 	//
-	ICategoryDAO categoryDAO = new ICategoryDAOImpl();
+	ICategoryDAO categoryDAO = new CategoryDAOImpl();
 	
+	
+//	@Override
+//	public void edit(CategoryModel newCategory) {
+//		CategoryModel oldCategory = categoryDAO.get(newCategory.getCateid());
+//		oldCategory.setCatename(newCategory.getCatename());
+//		if (newCategory.getImages() != null) {
+//			// XOA ANH CU DI
+//			String fileName = oldCategory.getImages();
+//			final String dir = "C:\\UTEXLMS\\Nam3_2022_2023\\LTW\\upload";
+//			File file = new File(dir + "/category" + fileName);
+//			if (file.exists()) {
+//			file.delete();
+//		}
+//		oldCategory.setImages(newCategory.getImages());
+//		}
+//		categoryDAO.edit(oldCategory);
+//		}
+	@Override
+	public int countAll(){
+		return categoryDAO.countAll();
+	}
+	
+	@Override
+	public List<CategoryModel> findAllPage(int indexp, int size){
+		return categoryDAO.findAllPage(indexp, size);
+	}
+	
+	@Override
+	public List<CategoryModel> searchByName(String keyword){
+		return categoryDAO.searchByName(keyword);
+	}
+
+	@Override
+	public void edit(CategoryModel category){
+		categoryDAO.edit(category);
+	}
+	@Override
+	public void update(CategoryModel category){
+		categoryDAO.edit(category);
+	}
+
+	@Override
+	public List<CategoryModel> findAll(){
+		return categoryDAO.findAll();
+	}
+
+	@Override
+	public CategoryModel findByCategoryId(int categoryId) {
+		return categoryDAO.findByCategoryId(categoryId);
+	}
+
+	@Override
+	public void deleteByCategoryId(int catetegoryId) {
+		categoryDAO.deleteByCategoryId(catetegoryId);
+	}
+	@Override
+	public void deleteBy_id(int _id) {
+		categoryDAO.deleteBy_id(_id);
+	}
+
 	@Override
 	public void insert(CategoryModel category) {
 		categoryDAO.insert(category);
 	}
-	@Override
-	public void edit(CategoryModel newCategory) {
-		CategoryModel oldCategory = categoryDAO.get(newCategory.getCateid());
-		oldCategory.setCatename(newCategory.getCatename());
-		if (newCategory.getImages() != null) {
-			// XOA ANH CU DI
-			String fileName = oldCategory.getImages();
-			final String dir = "C:\\UTEXLMS\\Nam3_2022_2023\\LTW\\upload";
-			File file = new File(dir + "/category" + fileName);
-			if (file.exists()) {
-			file.delete();
-		}
-		oldCategory.setImages(newCategory.getImages());
-		}
-		categoryDAO.edit(oldCategory);
-		}
-	@Override
-	public void delete(int id) {
-		categoryDAO.delete(id);
-	}
-	@Override
-	public CategoryModel get(int id) {
-		return categoryDAO.get(id);
-	}
 	
 	@Override
-	public List<CategoryModel> findAll() {
-		return categoryDAO.findAll();
-	}
-	
-	@Override
-	public CategoryModel get(String name) {
-		return categoryDAO.get(name);
-	}
-
-	@Override
-	public List<CategoryModel> search(String catename) {
-		return categoryDAO.search(catename);
-	} 
-	@Override
-	public CategoryModel findById(int id) {
-		return categoryDAO.findById(id);
+	public CategoryModel findBy_id(int _id) {
+		return categoryDAO.findBy_id(_id);
 	}
 }

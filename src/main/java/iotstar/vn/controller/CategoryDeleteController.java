@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import iotstar.vn.Service.ICategoryService;
 import iotstar.vn.Service.Impl.ICategoryServiceImpl;
 
-@WebServlet(urlPatterns = { "/admin/category/delete" })
 public class CategoryDeleteController extends HttpServlet {
 	ICategoryService cateService = new ICategoryServiceImpl();
 	

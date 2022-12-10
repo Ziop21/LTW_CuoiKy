@@ -22,8 +22,7 @@ import vn.iotstar.util.Constant;
 import iotstar.vn.Service.ICategoryService;
 
 	
-//List Categories
-@WebServlet(urlPatterns = { "/admin/category/list" })
+
 public class CategoryListController extends HttpServlet {
 	ICategoryService cateService = new ICategoryServiceImpl();
 

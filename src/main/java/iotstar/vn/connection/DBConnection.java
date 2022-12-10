@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 	private final String serverName = "LAPTOP-1F69K9NB";
-	private final String dbName = "ShopOnline";
+	private final String dbName = "LTW_Servlet_JSP";
 	//private final String portNumber = "1433";
 	private final String instance = "MSSQLSERVER2016";// MSSQLSERVER LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
 	private final String userID = "newsa";
@@ -29,7 +29,8 @@ public class DBConnection {
 	} */
 	public static void main(String[] args) {
 		try {
-		System.out.println(new DBConnection().getConnection());
+			System.out.println(new DBConnection().getConnection());
+			
 		} catch (Exception e) {
 		e.printStackTrace();
 		}

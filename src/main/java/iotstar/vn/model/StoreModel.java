@@ -124,6 +124,8 @@ public class StoreModel implements Serializable{
 	public void setPoint(int point) {
 		this.point = point;
 	}
+
+	 
 //	public int getRating() {
 //		return rating;
 //	}
