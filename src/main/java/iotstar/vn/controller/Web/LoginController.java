@@ -69,7 +69,7 @@ public class LoginController extends HttpServlet {
 				resp.addCookie(userIdCookie);
 				resp.addCookie(countCartItemCok);
 				// chuyển sang trang HelloServlet
-				if(user.getRole().compareTo("User")==0)
+				if(user.getRole().contains("User"))
 				{
 					resp.sendRedirect(req.getContextPath()+ "/cartitem/list");
 				}

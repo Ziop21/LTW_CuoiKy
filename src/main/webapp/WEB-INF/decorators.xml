@@ -5,6 +5,7 @@
 		<pattern>/login*</pattern>
 		<pattern>/register*</pattern>
 		<pattern>/forgetpass*</pattern>
+		<pattern>/myprofile*</pattern>
 	</excludes>
 
 	<!-- apply Sitemesh default template -->

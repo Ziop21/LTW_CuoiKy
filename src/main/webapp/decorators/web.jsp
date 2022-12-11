@@ -33,6 +33,7 @@
 
 
 <link href="${URL}css/style.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>

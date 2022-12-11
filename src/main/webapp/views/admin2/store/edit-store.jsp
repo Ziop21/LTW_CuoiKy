@@ -15,7 +15,7 @@
 						<div id="pay-invoice">
 							<div class="card-body">
 								<div class="card-title">
-									<h3 class="text-center">Chi tiết cửa hàng</h3>
+									<h3 class="text-center">cập nhật cửa hàng</h3>
 								</div>
 								<hr>
 								<form action="#" method="post" novalidate="novalidate">
@@ -69,7 +69,7 @@
 									</div>
 									<div class="form-group">
 										<label for="cc-payment" class="control-label mb-1">Avatar
-											</label> <input id="cc-payment" name="cc-payment" type="text"
+											</label> <input id="cc-payment" name="icon" type="file"
 											class="form-control" aria-required="true"
 											aria-invalid="false" value="${store.avatar }">
 									</div>

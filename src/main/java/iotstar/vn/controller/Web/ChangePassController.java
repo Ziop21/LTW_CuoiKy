@@ -48,7 +48,7 @@ public class ChangePassController extends HttpServlet{
 				userService.updatePass(email, confirmPassword);
 			}
 		}
-		req.setAttribute("mess", "");
+		req.setAttribute("mess", null);
 		req.getRequestDispatcher("/login").forward(req, resp);		
 	}	
 }

@@ -26,13 +26,16 @@ public class UserModel implements Serializable {
 	private int e_wallet;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
+	private StoreModel store;
 	public UserModel() {
 		super();
 	}
+	
 	public UserModel(int _id, String firstname, String lastname, String slug, String id_card, String email,
 			String phone, boolean isEmailActive, boolean isPhoneActive, String salt, String hashed_password,
 			String role, String[] addresses, String address, String avatar, String cover, int point, int e_wallet,
-			Timestamp createdAt, Timestamp updatedAt) {
+			Timestamp createdAt, Timestamp updatedAt, StoreModel store) {
+		super();
 		this._id = _id;
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -53,7 +56,9 @@ public class UserModel implements Serializable {
 		this.e_wallet = e_wallet;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+		this.store = store;
 	}
+
 	public int get_id() {
 		return _id;
 	}
@@ -173,6 +178,14 @@ public class UserModel implements Serializable {
 	}
 	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public StoreModel getStore() {
+		return store;
+	}
+
+	public void setStore(StoreModel store) {
+		this.store = store;
 	}
 	
 }

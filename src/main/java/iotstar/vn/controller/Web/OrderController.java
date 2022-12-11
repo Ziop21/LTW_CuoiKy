@@ -9,15 +9,19 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import iotstar.vn.Service.ICartItemService;
+import iotstar.vn.Service.ICartService;
 import iotstar.vn.Service.IOrderService;
 import iotstar.vn.Service.Impl.CartItemServiceImpl;
+import iotstar.vn.Service.Impl.CartServiceImpl;
 import iotstar.vn.Service.Impl.OrderServiceImpl;
 import iotstar.vn.model.CartItemModel;
+import iotstar.vn.model.CartModel;
 import iotstar.vn.model.OrderItemModel;
 import iotstar.vn.model.OrderModel;
 import iotstar.vn.model.ProductModel;
@@ -25,12 +29,23 @@ import iotstar.vn.model.ProductModel;
 public class OrderController extends HttpServlet{
 	IOrderService orderService = new OrderServiceImpl();
 	ICartItemService cartItemService = new CartItemServiceImpl();
-
+	ICartService cartService = new CartServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int cartId = 1;
+		int userId = 0;
+		Cookie cookie = null;
+		Cookie[] cookies = req.getCookies();
+		resp.setContentType("text/html");
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if ((cookies[i].getName()).compareTo("userId") == 0) {
+					userId = Integer.parseInt(cookies[i].getValue());
+				}
+			}
+		}
+		CartModel cart = cartService.get(userId);
 		float thanhtien = 0;
-		List<CartItemModel> cartItemList = cartItemService.findAllByCartId(cartId);
+		List<CartItemModel> cartItemList = cartItemService.findAllByCartId(cart.get_id());
 		List<ProductModel> products = new ArrayList<ProductModel>();
 		for (CartItemModel item : cartItemList) {
 			ProductModel product = cartItemService.get(item.getProductId());

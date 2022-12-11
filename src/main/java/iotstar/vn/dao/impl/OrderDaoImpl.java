@@ -140,6 +140,34 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 		return orders;
 		}
 	@Override
+	public List<OrderModel> findAllByUserId(int userId){
+		List<OrderModel> orders = new ArrayList<OrderModel>();
+		String sql = "SELECT * FROM [dbo].[Order] WHERE _id=?";
+		try {
+			Connection conn = super.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, userId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				OrderModel order = new OrderModel();
+				order.set_id(rs.getInt("_id"));
+				order.setUserId(rs.getInt("userId"));
+				order.setCartId(rs.getInt("cartId"));
+				order.setAddress(rs.getString("address"));
+				order.setPhone(rs.getString("phone"));
+				order.setStatus(rs.getString("status"));
+				order.setPaidBefore(rs.getBoolean("isPaidBefore"));
+				order.setAmountFromUser(rs.getFloat("amountFromUser"));
+				order.setCreatedAt(rs.getTimestamp("createdAt"));
+				order.setUpdatedAt(rs.getTimestamp("updatedAt"));
+				orders.add(order);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return orders;
+		}
+	@Override
 	public OrderModel getById(int id){
 		String sql = "SELECT * FROM [dbo].[Order] WHERE _id=?";
 		try {

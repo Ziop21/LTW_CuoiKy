@@ -190,7 +190,7 @@ public class IUserDAOImpl extends DBConnection implements IUserDAO {
 				user.setPhoneActive(rs.getBoolean("isPhoneActive"));
 				user.setSalt(rs.getString("salt"));
 				user.setHashed_password(rs.getString("password"));
-				user.setRole(rs.getString("role"));
+				user.setRole(rs.getString("role").trim());
 				user.setAddress(rs.getString("address"));		
 				user.setAvatar(rs.getString("avatar"));		
 				user.setCover(rs.getString("cover"));		

@@ -25,4 +25,9 @@ public class StoreServiceImpl implements IStoreService{
 		return storeDao.findAll();
 	}
 
+	@Override
+	public StoreModel getByOwnerId(int id) {
+		return storeDao.getByOwnerId(id);
+	}
+
 }

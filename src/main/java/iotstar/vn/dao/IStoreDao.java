@@ -12,4 +12,6 @@ public interface IStoreDao {
 
 	List<StoreModel> findAll();
 
+	StoreModel getByOwnerId(int id);
+
 }

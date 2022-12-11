@@ -15,87 +15,62 @@
 						<div id="pay-invoice">
 							<div class="card-body">
 								<div class="card-title">
-									<h3 class="text-center">Cập nhật cửa hàng</h3>
+									<h3 class="text-center">Chi tiet cửa hàng</h3>
 								</div>
 								<hr>
 								<form action="#" method="post" novalidate="novalidate">
 									<div class="form-group">
-										<label for="_id" class="control-label mb-1">ID
-											</label> <input id="_id" name="_id" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store._id }">
+										<label for="_id" class="control-label mb-1">ID:${store._id }
+											</label>
 									</div>
 									<div class="form-group">
-										<label for="name" class="control-label mb-1">Name
-											</label> <input id="name" name="name" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store.name }">
+										<label for="name" class="control-label mb-1">Name:${store.name }
+											</label> 
 									</div>
 									<div class="form-group">
-										<label for="bio" class="control-label mb-1">Bio
-											</label> <input id="bio" name="bio" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store.bio }">
+										<label for="bio" class="control-label mb-1">Bio:${store.bio }
+											</label>
 									</div>
 									<div class="form-group">
-										<label for="slug" class="control-label mb-1">Slug
-											</label> <input id="slug" name="slug" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store.slug }">
-									</div>
+										<label for="slug" class="control-label mb-1">Slug:${store.slug }
+											</label> 
 									<div class="form-group">
-										<label for="ownerId" class="control-label mb-1">Owner
-											</label> <input id="ownerId" name="ownerId" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store.ownerId }">
+										<label for="ownerId" class="control-label mb-1">Owner:${store.ownerId }
+											</label>
 									</div>
 									<div class="form-group">
 										<label for="cc-payment" class="control-label mb-1">Staff
-											</label> <input id="cc-payment" name="cc-payment" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="">
+											</label> 
 									</div>
 									<div class="form-group">
-										<label for="isActive" class="control-label mb-1">Active
-											</label> <input id="isActive" name="isActive" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store.isActive }">
+										<label for="isActive" class="control-label mb-1">Active:${store.isActive }
+											</label> 
 									</div>
 									<div class="form-group">
-										<label for="isOpen" class="control-label mb-1">Open
-											</label> <input id="isOpen" name="isOpen" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store.isOpen }">
+										<label for="isOpen" class="control-label mb-1">Open:${store.isOpen }
+											</label> 
 									</div>
 									<div class="form-group">
-										<label for="avatar" class="control-label mb-1">Avatar
-											</label> <input id="avatar" name="avatar" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store.avatar }">
+										<label for="avatar" class="control-label mb-1">Avatar:
+											</label> <img alt="" src="${store.avatar }">
 									</div>
 									<div class="form-group">
 										<label for="cc-payment" class="control-label mb-1">Cover
-											</label> <input id="cc-payment" name="cover" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store.cover }">
+											</label> 
+											<img src="${store.cover }">
 									</div>
 									<div class="form-group">
 										<label for="cc-payment" class="control-label mb-1">Feature Image
-											</label> <input id="cc-payment" name="cc-payment" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="">
+											</label>
+											<img alt="" src="">
 									</div>
 									<div class="form-group">
-										<label for="createdAt" class="control-label mb-1">Created At
-											</label> <input id="createdAt" name="createdAt" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store.createdAt }">
+										<label for="createdAt" class="control-label mb-1">Created At:${store.createdAt }
+											</label>
 									</div>
 									<div class="form-group">
-										<label for="updatedAt" class="control-label mb-1">Updated At
-											</label> <input id="updatedAt" name="updatedAt" type="text"
-											class="form-control" aria-required="true"
-											aria-invalid="false" value="${store.updatedAt }">
+										<label for="updatedAt" class="control-label mb-1">Updated At :${store.updatedAt }
+											</label> 
 									</div>
 								</form>
 							</div>

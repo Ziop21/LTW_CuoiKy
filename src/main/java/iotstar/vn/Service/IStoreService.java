@@ -11,4 +11,5 @@ public interface IStoreService {
 	StoreModel getById(int id);
 
 	List<StoreModel> findAll();
+	StoreModel getByOwnerId(int id);
 }

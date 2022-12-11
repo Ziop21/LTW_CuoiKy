@@ -54,6 +54,11 @@ public class OrderServiceImpl implements IOrderService{
 		orderDao.updateStatus(id, status);
 		
 	}
+
+	@Override
+	public List<OrderModel> findAllByUserId(int userId) {
+		return orderDao.findAllByUserId(userId);
+	}
 	
 
 }

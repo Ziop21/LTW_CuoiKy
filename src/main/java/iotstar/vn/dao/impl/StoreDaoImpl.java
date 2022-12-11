@@ -80,4 +80,32 @@ public class StoreDaoImpl extends DBConnection implements IStoreDao{
 			e.printStackTrace();
 		}
 	}
+	@Override
+	public StoreModel getByOwnerId(int id){
+		String sql = "SELECT * FROM [dbo].[Store] WHERE ownerId=?";
+		try {
+			Connection conn = super.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				StoreModel store = new StoreModel();
+				store.set_id(rs.getInt("_id"));
+				store.setName(rs.getString("name"));
+				store.setBio(rs.getString("bio"));
+				store.setSlug(rs.getString("slug"));
+				store.setOwnerId(rs.getInt("ownerId"));
+				store.setIsActive(rs.getBoolean("isActive"));
+				store.setIsOpen(rs.getBoolean("isOpen"));
+				store.setAvatar(rs.getString("avatar"));
+				store.setCover(rs.getString("createdAt"));
+				store.setCreatedAt(rs.getTimestamp("updatedAt"));
+				store.setCreatedAt(rs.getTimestamp("createdAt"));
+				return store;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		}
 }

@@ -47,7 +47,7 @@
 		</div>
 		<div class="navbar-inline">
 			<c:if test="${username != null }">
-				<span style="color:white">${username }</span>
+				<a href="<c:url value="/myprofile/info?email=${username }"/>"><span style="color:white">${username }</span></a>
 				<a href="<c:url value='/logout'/>" style="color:white">Đăng xuất</a>
 			</c:if>
 			<c:if test="${username == null }">

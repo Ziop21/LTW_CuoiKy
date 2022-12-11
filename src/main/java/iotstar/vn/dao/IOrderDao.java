@@ -23,4 +23,6 @@ public interface IOrderDao {
 
 	void updateStatus(int id, String status);
 
+	List<OrderModel> findAllByUserId(int userId);
+
 }

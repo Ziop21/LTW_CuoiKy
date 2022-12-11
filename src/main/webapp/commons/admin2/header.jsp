@@ -25,7 +25,9 @@
                      <li class="menu-item-has-children dropdown ${orderCheck=='1' ? 'alert-primary':''  }">
                         <a href="<c:url value='/admin2/order/list'/>" class="dropdown-toggle"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Order</a>
                     </li>
-
+                    <li class="menu-item-has-children dropdown ${vendorCheck=='1' ? 'alert-primary':''  }">
+                        <a href="<c:url value='/admin2/vendor/list'/>" class="dropdown-toggle"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Vendor</a>
+                    </li>
                     <li class="menu-title">Icons</li><!-- /.menu-title -->
 
                     <li class="menu-item-has-children dropdown">

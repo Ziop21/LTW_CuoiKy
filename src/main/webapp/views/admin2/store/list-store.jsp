@@ -96,7 +96,7 @@
                                             <td>${store.isActive==true ? 'Active':'No active' }</td>
                                             <td>${store.isOpen==true ? 'Open':'Close'  }</td>
                                             <td>${store.avatar }</td>
-                                            <td><a href="<c:url value='/admin2/store/edit?userId=${store._id }'/>" class="btn btn-info" >Cập nhật </a> <a href="<c:url value='/admin2/store/detail?storeId=${store._id }'/>" class="btn btn-success" >Chi tiết </a> <a href="<c:url value='/admin2/store/delete?storeId=${store._id }'/>" class="btn btn-danger">Xóa</a></td> 
+                                            <td><a href="<c:url value='/admin2/store/edit?storeId=${store._id }'/>" class="btn btn-info" >Cập nhật </a> <a href="<c:url value='/admin2/store/detail?storeId=${store._id }'/>" class="btn btn-success" >Chi tiết </a> <a href="<c:url value='/admin2/store/delete?storeId=${store._id }'/>" class="btn btn-danger">Xóa</a></td> 
                                         </tr>
                                     	</c:forEach>
                                     </tbody>
