@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Đăng ký tài khoản</title>
+    <title>Đăng ký</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,43 +26,28 @@
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 </head>
-<body class="bg-dark">
+<body  class="bg-dark">
 
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
                 <div class="login-logo">
-                    <h2 style="color:white">Đăng ký</h2>
+                    <a href="index.html">
+                        <img class="align-content" src="images/logo.png" alt="">
+                    </a>
+                    <h2 style="color:white">Đăng ký tài khoản</h2>
                 </div>
+                <c:url value="/register/confirm-email" var="email"></c:url>
                 <div class="login-form">
-                <c:url value="/register" var="register"></c:url>
-                    <form action="${register }" method="post">
+                    <form action="${email }" method="post">
+                    <div class="alert-danger">
+                    <p>${mess }</p>
+                    </div>
                         <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" class="form-control" placeholder="First Name" name="firstname">
+                            <label style="color:white">Địa chỉ email muốn đăng ký</label>
+                            <input type="email" class="form-control" placeholder="Nhập email" name="email">
                         </div>
-                        <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" class="form-control" placeholder="Last Name" name="lastname">
-                        </div>
-                        <div class="form-group">
-                            <label>Địa chỉ email</label>
-                            <input type="email" class="form-control" placeholder="Nhập email" name="email" value="${emailRegister }">
-                        </div>
-                        <div class="form-group">
-                            <label>Mật khẩu</label>
-                            <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="password">
-                        </div>
-                        <div class="form-group">
-                            <label>Xác nhận mật khẩu</label>
-                            <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="confirmPassword">
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" required> Đồng ý với điều khoản của chúng tôi
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Đăng ký</button>
+                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Lấy mã xác nhận</button>
                         <div class="register-link m-t-15 text-center">
                             <p>Bạn đã có tài khoản ? <a href="<c:url value='/login'/>"> Đăng nhập</a></p>
                         </div>
@@ -77,6 +62,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="${URL }assets/js/main.js"></script>
-
 </body>
 </html>

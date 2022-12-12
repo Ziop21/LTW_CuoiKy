@@ -72,7 +72,7 @@
 							class="btn btn-success btn-flat m-b-30 m-t-30">Đăng nhập</button>
 						<div class="register-link m-t-15 text-center">
 							<p>
-								Bạn chưa có tài khoản? <a href="<c:url value='/register'/>">
+								Bạn chưa có tài khoản? <a href="<c:url value='/register/confirm-email'/>">
 									Đăng ký</a>
 							</p>
 						</div>
