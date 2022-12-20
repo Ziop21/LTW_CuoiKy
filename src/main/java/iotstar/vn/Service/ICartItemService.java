@@ -21,4 +21,5 @@ public interface ICartItemService {
 	int countAll();
 	List<ProductModel> findAllProduct();
 	int countAllByCartId(int cartId);
+	CartItemModel findById(int id);
 }

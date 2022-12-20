@@ -25,4 +25,8 @@ public interface IOrderDao {
 
 	List<OrderModel> findAllByUserId(int userId);
 
+	int TinhDoanhThuTheoThang(int month);
+
+	int SoLuongBanTheoThang(int month);
+
 }

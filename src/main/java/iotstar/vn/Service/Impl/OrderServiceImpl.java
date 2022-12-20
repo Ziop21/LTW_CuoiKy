@@ -59,6 +59,16 @@ public class OrderServiceImpl implements IOrderService{
 	public List<OrderModel> findAllByUserId(int userId) {
 		return orderDao.findAllByUserId(userId);
 	}
+
+	@Override
+	public int TinhDoanhThuTheoThang(int month) {
+		return orderDao.TinhDoanhThuTheoThang(month);
+	}
+
+	@Override
+	public int SoLuongBanTheoThang(int month) {
+		return orderDao.SoLuongBanTheoThang(month);
+	}
 	
 
 }

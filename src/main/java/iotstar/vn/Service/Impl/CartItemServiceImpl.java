@@ -52,6 +52,10 @@ public class CartItemServiceImpl implements ICartItemService{
 	public int countAllByCartId(int cartId) {
 		return cartItemDao.countAllByCartId(cartId);
 	}
+	@Override
+	public CartItemModel findById(int id) {
+		return cartItemDao.findById(id);
+	}
 	
 	
 	

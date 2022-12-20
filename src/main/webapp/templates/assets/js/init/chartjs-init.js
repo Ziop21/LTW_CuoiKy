@@ -390,10 +390,10 @@
     var myChart = new Chart( ctx, {
         type: 'bar',
         data: {
-            labels: [ "Sun", "Mon", "Tu", "Wed", "Th", "Fri", "Sat" ],
+            labels: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec" ],
             datasets: [
                 {
-                    label: "My First dataset",
+                    label: "Doanh Thu Theo Thang",
                     data: [ 55, 50, 75, 80, 56, 55, 60 ],
                     borderColor: "rgba(0, 194, 146, 0.9)",
                     borderWidth: "0",

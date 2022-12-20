@@ -228,16 +228,25 @@
 									tin cá nhân
 							</a></li>
 							<c:if test="${user.role.contains('User')}">
-								<li ><a
+								<li><a
 									href="<c:url value="/myprofile/listorder?userId=${user._id }"/>">
 										<i class="glyphicon glyphicon-shopping-cart"></i> Quản lý đơn
 										hàng
 								</a></li>
 							</c:if>
 							<li class="active"><a
-									href="<c:url value="/myprofile/status-regisvendor?userId=${user._id }"/>">
-										<i class="glyphicon glyphicon-shopping-cart"></i> Đăng ký vendor
-								</a></li>
+								href="<c:url value="/myprofile/status-regisvendor?userId=${user._id }"/>">
+									<i class="glyphicon glyphicon-shopping-cart"></i> Đăng ký
+									vendor
+							</a></li>
+							<c:if test="${user.role.contains('Vendor')}">
+								<li><a
+									href="<c:url value="/myprofile/listorder?userId=${user._id }"/>">
+										<i class="glyphicon glyphicon-shopping-cart"
+										id="dropdownMenuButton"></i> Quản lí cửa hàng
+							</a>
+							</li>
+							</c:if>
 						</ul>
 					</div>
 
@@ -246,7 +255,9 @@
 			<div class="col-md-9">
 				<div class="profile-content">
 					<div class="table-stats order-table ov-h">
-					<a class="btn btn-primary" style="font-size:16px" href="<c:url value='/myprofile/regisvendor?userId=${user._id }'/>">Đăng ký vendor</a>
+						<a class="btn btn-primary" style="font-size: 16px"
+							href="<c:url value='/myprofile/regisvendor?userId=${user._id }'/>">Đăng
+							ký vendor</a>
 						<table class="table ">
 							<thead>
 								<tr>

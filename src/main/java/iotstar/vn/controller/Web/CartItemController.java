@@ -21,7 +21,7 @@ import iotstar.vn.model.CartItemModel;
 import iotstar.vn.model.CartModel;
 import iotstar.vn.model.ProductModel;
 
-@WebServlet(urlPatterns = { "/cartitem/list", "/cartitem/delete", "/cartitem/add" })
+@WebServlet(urlPatterns = { "/cartitem/list", "/cartitem/delete", "/cartitem/add","/cartitem/edit" })
 public class CartItemController extends HttpServlet {
 	ICartItemService cartItemService = new CartItemServiceImpl();
 	ICartService cartService = new CartServiceImpl();
@@ -147,4 +147,23 @@ public class CartItemController extends HttpServlet {
 		resp.sendRedirect(req.getContextPath() + "/cartitem/list");
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String url = req.getRequestURL().toString();
+		if (url.contains("cartitem/edit")) {
+			EditCartItem(req, resp);
+		}
+	}
+	protected void EditCartItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("cartItemId");
+		int quantity = Integer.parseInt(req.getParameter("quantity"));		
+		CartItemModel cartItem = cartItemService.findById(Integer.parseInt(id));
+		ProductModel product = cartItemService.get(cartItem.getProductId());
+		if(quantity<=product.getQuantity())
+		{
+			cartItem.setCount(quantity);
+			cartItemService.editCount(cartItem);
+		}
+		resp.sendRedirect(req.getContextPath() + "/cartitem/list");
+	}
 }

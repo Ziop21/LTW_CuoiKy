@@ -23,18 +23,41 @@ public class CartItemDaoImpl extends DBConnection implements ICartItemDao {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				CartItemModel cartItem = new CartItemModel();
-				cartItem.set_id(rs.getInt("categoryId"));
-				cartItem.setCartId(rs.getInt("categoryName"));
-				cartItem.setCount(rs.getInt("images"));
-				cartItem.setProductId(rs.getInt("status"));
-				cartItem.setCreatedAt(rs.getTimestamp("status"));
-				cartItem.setUpdatedAt(rs.getTimestamp("status"));
+				cartItem.set_id(rs.getInt("_id"));
+				cartItem.setCartId(rs.getInt("cartId"));
+				cartItem.setCount(rs.getInt("count"));
+				cartItem.setProductId(rs.getInt("productId"));
+				cartItem.setCreatedAt(rs.getTimestamp("createdAt"));
+				cartItem.setUpdatedAt(rs.getTimestamp("updatedAt"));
 				cartItems.add(cartItem);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return cartItems;
+		}
+	@Override
+	public CartItemModel findById(int id){
+		String sql = "SELECT * FROM CartItem Where _id = ?";
+		try {
+			Connection conn = super.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				CartItemModel cartItem = new CartItemModel();
+				cartItem.set_id(rs.getInt("_id"));
+				cartItem.setCartId(rs.getInt("cartId"));
+				cartItem.setCount(rs.getInt("count"));
+				cartItem.setProductId(rs.getInt("productId"));
+				cartItem.setCreatedAt(rs.getTimestamp("createdAt"));
+				cartItem.setUpdatedAt(rs.getTimestamp("updatedAt"));
+				return cartItem;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 		}
 	@Override
 	public int countAll() {

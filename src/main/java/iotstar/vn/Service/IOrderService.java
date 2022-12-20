@@ -20,4 +20,7 @@ public interface IOrderService {
 	List<OrderModel> findAll();
 	void updateStatus(int id, String status);
 	List<OrderModel> findAllByUserId(int userId);
+	int TinhDoanhThuTheoThang(int month);
+
+	int SoLuongBanTheoThang(int month);
 }

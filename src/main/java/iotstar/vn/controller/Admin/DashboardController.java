@@ -10,12 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import iotstar.vn.Service.IOrderService;
+import iotstar.vn.Service.Impl.OrderServiceImpl;
+
 /**
  * Servlet implementation class admin2
  */
 @WebServlet("/admin2/dashboard")
 public class DashboardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	IOrderService orderService = new OrderServiceImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,6 +44,17 @@ public class DashboardController extends HttpServlet {
 				}
 			}
 		}
+		int TongSLBan = 0;
+		int TongDoanhThuBan = 0;
+		for (int i = 1; i <= 12; i++) {
+			TongDoanhThuBan += orderService.TinhDoanhThuTheoThang(i);
+			TongSLBan += orderService.SoLuongBanTheoThang(i);
+			request.setAttribute("SL"+Integer.toString(i), orderService.SoLuongBanTheoThang(i));
+			request.setAttribute("DT"+Integer.toString(i), orderService.TinhDoanhThuTheoThang(i));
+        }
+		request.setAttribute("orderList", orderService.findAll());
+		request.setAttribute("TongDoanhThuBan", TongDoanhThuBan);
+		request.setAttribute("TongSLBan", TongSLBan);
 		request.setAttribute("email", userName);
 		response.setContentType("text/html");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin2/dashboard.jsp");

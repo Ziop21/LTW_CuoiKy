@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container">
-<h2>Giỏ hàng</h2>
+	<h2>Giỏ hàng</h2>
 	<div class="row">
 		<div class="col-md-12">
 			<table id="example" class="table table-striped table-bordered"
@@ -38,15 +38,21 @@
 									<td>${product.price }</td>
 								</c:if>
 							</c:forEach>
-							<td>${cartitem.count }</td>
+							<c:url value="/cartitem/edit" var="edit"></c:url>
+							<td><form id="${cartitem._id }quantityUpdate" method="post"
+									action="${edit }">
+									<input type="number" id="quantity" name="quantity"
+										class="form-control input-number text-center"
+										value="${cartitem.count }" min="1" max="100">
+										 <input type="text" name="cartItemId" value="${cartitem._id }" hidden />
+
+								</form></td>
 							<c:forEach items="${products }" var="product">
 								<c:if test="${product._id == cartitem.productId}">
 									<td>${product.price*cartitem.count}</td>
 								</c:if>
 							</c:forEach>
-							<td><a
-								href="<c:url value='/cartitem/edit?id=${cartitem._id }'/>"
-								class="center">Sửa</a> | <a
+							<td><button type="submit" class="btn btn-success" form="${cartitem._id }quantityUpdate">Cập nhật</button>| <a
 								href="<c:url value='/cartitem/delete?id=${cartitem._id }'/>"
 								class="center">Xóa</a></td>
 						</tr>

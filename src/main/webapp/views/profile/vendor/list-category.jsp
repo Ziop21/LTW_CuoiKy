@@ -186,7 +186,8 @@
 			</div>
 			<div class="navbar-inline">
 				<c:if test="${user != null }">
-					<a href="<c:url value="/myprofile/info?email=${user.email }"/>"><span style="color:white">${user.email }</span></a>
+					<a href="<c:url value="/myprofile/info?email=${user.email }"/>"><span
+						style="color: white">${user.email }</span></a>
 					<a href="<c:url value='/logout'/>" style="color: white">Đăng
 						xuất</a>
 				</c:if>
@@ -221,93 +222,71 @@
 								href="<c:url value="/myprofile/info?userId=${user._id }"/>">
 									<i class="glyphicon glyphicon-info-sign"></i> Thông tin cá nhân
 							</a></li>
-							<li class="active"><a
+							<li><a
 								href="<c:url value="/myprofile/edit?userId=${user._id }"/>">
 									<i class="glyphicon glyphicon-info-sign"></i> Cập nhật thông
 									tin cá nhân
 							</a></li>
 							<c:if test="${user.role.contains('User')}">
-								<li><a
+								<li class="active"><a
 									href="<c:url value="/myprofile/listorder?userId=${user._id }"/>">
 										<i class="glyphicon glyphicon-shopping-cart"></i> Quản lý đơn
 										hàng
 								</a></li>
 							</c:if>
 							<li><a
-									href="<c:url value="/myprofile/status-regisvendor?userId=${user._id }"/>">
-										<i class="glyphicon glyphicon-shopping-cart"></i> Đăng ký vendor
-								</a></li>
+								href="<c:url value="/myprofile/status-regisvendor?userId=${user._id }"/>">
+									<i class="glyphicon glyphicon-shopping-cart"></i> Đăng ký
+									vendor
+							</a></li>
+							<c:if test="${user.role.contains('Vendor')}">
+								<li class="active"><a
+									href="<c:url value="/myprofile/listorder?userId=${user._id }"/>">
+										<i class="glyphicon glyphicon-shopping-cart"
+										id="dropdownMenuButton"></i> Quản lí cửa hàng
+							</a>
+							</li>
+							</c:if>
 						</ul>
 					</div>
 
 				</div>
 			</div>
 			<div class="col-md-9">
+			<h3 class="text-center">Danh sách danh mục</h3>
 				<div class="profile-content">
-					<div class="card">
-						<div class="card-header"></div>
-						<div class="card-body">
-							<!-- Credit Card -->
-							<div id="pay-invoice">
-								<div class="card-body">
-									<div class="card-title">
-										<h3 class="text-center">Cập nhật thông tin</h3>
-									</div>
-									<hr>
-									<c:url value="/myprofile/edit" var="edit"></c:url>
-									<form action="${edit }" method="post" novalidate="novalidate">
-										<div class="form-group">
-											<label for="firstname" class="control-label mb-1">Firstname
-											</label> <input id="firstname" name="firstname" type="text"
-												class="form-control" aria-required="true"
-												aria-invalid="false" value="${user.firstname }">
-										</div>
-										<div class="form-group">
-											<label for="lastname" class="control-label mb-1">Lastname
-											</label> <input id="lastname" name="lastname" type="text"
-												class="form-control" aria-required="true"
-												aria-invalid="false" value="${user.lastname }">
-										</div>
-										<div class="form-group">
-											<label for="id_card" class="control-label mb-1">Id_Card
-											</label> <input id="id_card" name="id_card" type="text"
-												class="form-control" aria-required="true"
-												aria-invalid="false" value="${user.id_card }">
-										</div>
-										<div class="form-group">
-											<label for="email" class="control-label mb-1">Email </label>
-											<input id="email" name="email" type="text"
-												class="form-control" aria-required="true"
-												aria-invalid="false" value="${user.email }">
-										</div>
-										<div class="form-group">
-											<label for="phone" class="control-label mb-1">Phone </label>
-											<input id="phone" name="phone" type="text"
-												class="form-control" aria-required="true"
-												aria-invalid="false" value="${user.phone }">
-										</div>
-										<div class="form-group">
-											<label for="address" class="control-label mb-1">Address
-											</label> <input id="address" name="address" type="text"
-												class="form-control" aria-required="true"
-												aria-invalid="false" value="${user.address }">
-										</div>
-										<div class="form-group">
-											<label for="icon" class="control-label mb-1">Avatar </label>
-											<input id="icon" name="icon" type="file" class="form-control"
-												aria-required="true" aria-invalid="false"
-												value="${user.avatar }">
-										</div>
-										<div>
-											<button id="payment-button" type="submit"
-												class="btn btn-lg btn-info btn-block">Cập nhật</button>
-										</div>
-									</form>
-								</div>
-							</div>
-
-						</div>
-					</div>
+					<a
+						href="<c:url value='/myprofile/vendor/category/add'/>"
+						class="btn btn-info">Thêm</a>
+					<table id="bootstrap-data-table"
+						class="table table-striped table-bordered" style="width: 100%">
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th>Hình</th>
+								<th>Tên danh mục</th>
+								<th>Tên danh mục cha</th>
+								<th>Trạng thái</th>
+								<th>Chức năng</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${cateList}" var="cate" varStatus="STT">
+								<tr>
+									<td>{STT.index+1}</td>
+									<c:url value="/image?fname={cate.images }" var="imgUrl"></c:url>
+									<td><img height="150" width="200" src="{imgUrl}" /></td>
+									<td><a href="<c:url value='/myprofile/vendor/product/list?cateId=${cate._id }'/>">{cate.catename }</a></td>
+									<td>{cate.category }</td>
+									<td>{cate.status }</td>
+									<td><a
+										href="<c:url value='/myprofile/vendor/category/edit?id={cate.cateid }'/>"
+										class="center">Sửa</a> | <a
+										href="<c:url value='/myprofile/vendor/category/delete?id={cate.cateid }'/>"
+										class="center">Xóa</a></td>
+								</tr>
+							</c:forEach>
+					</table>
 				</div>
 			</div>
 		</div>

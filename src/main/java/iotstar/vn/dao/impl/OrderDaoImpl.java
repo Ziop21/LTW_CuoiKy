@@ -14,11 +14,10 @@ import iotstar.vn.model.OrderItemModel;
 import iotstar.vn.model.OrderModel;
 import iotstar.vn.model.ProductModel;
 
-public class OrderDaoImpl extends DBConnection implements IOrderDao{
+public class OrderDaoImpl extends DBConnection implements IOrderDao {
 
 	@Override
-	public void insert(OrderModel order)
-	{
+	public void insert(OrderModel order) {
 		String sql = "INSERT INTO [dbo].[Order]([userId], [cartId], [address], [phone], [status], [isPaidBefore], [amountFromUser], [createdAt] ) VALUES (?,?,?,?,?,?,?,?)";
 		try {
 			Connection con = super.getConnectionW();
@@ -30,12 +29,13 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 			ps.setString(5, order.getStatus());
 			ps.setBoolean(6, order.isPaidBefore());
 			ps.setFloat(7, order.getAmountFromUser());
-			ps.setTimestamp(8,order.getCreatedAt());
+			ps.setTimestamp(8, order.getCreatedAt());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 	@Override
 	public void delete(int id) {
 		String sql = "Delete FROM Order WHERE _id = ?";
@@ -48,9 +48,9 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 			e.printStackTrace();
 		}
 	}
+
 	@Override
-	public void taoOrderItem(OrderItemModel orderItem)
-	{
+	public void taoOrderItem(OrderItemModel orderItem) {
 		String sql = "INSERT INTO OrderItem(orderId, productId, count, createdAt) VALUES (?,?,?,?)";
 		try {
 			Connection con = super.getConnectionW();
@@ -58,12 +58,13 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 			ps.setInt(1, orderItem.getOrderId());
 			ps.setInt(2, orderItem.getProductId());
 			ps.setInt(3, orderItem.getCount());
-			ps.setTimestamp(4,orderItem.getCreatedAt());
+			ps.setTimestamp(4, orderItem.getCreatedAt());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 	@Override
 	public OrderModel getOrderNew() {
 		String sql = "SELECT TOP(1) * FROM [dbo].[Order] ORDER BY _id DESC";
@@ -71,7 +72,7 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 			Connection conn = super.getConnectionW();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {	
+			while (rs.next()) {
 				OrderModel order = new OrderModel();
 				order.set_id(rs.getInt("_id"));
 				order.setUserId(rs.getInt("userId"));
@@ -83,10 +84,9 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 		}
 		return null;
 	}
-	
+
 	@Override
-	public void updateSoldProduct(int quantity, int sold, int id)
-	{
+	public void updateSoldProduct(int quantity, int sold, int id) {
 		String sql = "UPDATE Product SET sold=?, quantity=? WHERE _id = ? ";
 		try {
 			Connection conn = super.getConnectionW();
@@ -99,8 +99,9 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 			e.printStackTrace();
 		}
 	}
+
 	@Override
-	public void updateStatus(int id,String status) {
+	public void updateStatus(int id, String status) {
 		String sql = "UPDATE [dbo].[Order] SET status=? WHERE _id = ? ";
 		try {
 			Connection con = super.getConnectionW();
@@ -112,8 +113,9 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 			e.printStackTrace();
 		}
 	}
+
 	@Override
-	public List<OrderModel> findAll(){
+	public List<OrderModel> findAll() {
 		List<OrderModel> orders = new ArrayList<OrderModel>();
 		String sql = "SELECT * FROM [dbo].[Order]";
 		try {
@@ -138,11 +140,12 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 			e.printStackTrace();
 		}
 		return orders;
-		}
+	}
+
 	@Override
-	public List<OrderModel> findAllByUserId(int userId){
+	public List<OrderModel> findAllByUserId(int userId) {
 		List<OrderModel> orders = new ArrayList<OrderModel>();
-		String sql = "SELECT * FROM [dbo].[Order] WHERE _id=?";
+		String sql = "SELECT * FROM [dbo].[Order] WHERE userId=?";
 		try {
 			Connection conn = super.getConnectionW();
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -166,9 +169,10 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 			e.printStackTrace();
 		}
 		return orders;
-		}
+	}
+
 	@Override
-	public OrderModel getById(int id){
+	public OrderModel getById(int id) {
 		String sql = "SELECT * FROM [dbo].[Order] WHERE _id=?";
 		try {
 			Connection conn = super.getConnectionW();
@@ -193,5 +197,40 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public int SoLuongBanTheoThang(int month) {
+		String sql = "SELECT SUM(count) FROM [dbo].[OrderItem] WHERE MONTH(createdAt)=?";
+		try {
+			Connection conn = super.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, month);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int SoLuong = rs.getInt(1);
+				return SoLuong;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return 0;
+	}@Override
+	public int TinhDoanhThuTheoThang(int month) {
+		String sql = "SELECT SUM(amountFromUser) FROM [dbo].[Order] WHERE MONTH(createdAt)=? and status =?";
+		try {
+			Connection conn = super.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, month);
+			ps.setString(2, "Đã xác nhận");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int SoLuong = rs.getInt(1);
+				return SoLuong;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
